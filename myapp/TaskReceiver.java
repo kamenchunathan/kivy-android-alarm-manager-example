@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
 import android.provider.Settings;
 
 
-public class Notify extends BroadcastReceiver {
+public class TaskReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
         MediaPlayer mediaPlayer = MediaPlayer.create(

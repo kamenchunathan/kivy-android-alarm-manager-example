@@ -16,7 +16,7 @@ public class AlarmScheduler{
 
     public void setAlarm(long timeInMillis){
         AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new  Intent(mContext, Notify.class);
+        Intent intent = new  Intent(mContext, TaskReceiver.class);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext, 0, intent, 0);
         alarmManager.setRepeating(AlarmManager.RTC, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
