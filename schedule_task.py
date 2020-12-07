@@ -8,8 +8,6 @@ The implementation was done in java instead of python using jnius because of an
 error that occurred when using the getClass() method of a reflected java class.
 """
 import time
-
-
 from jnius import autoclass
 
 PythonActivity = autoclass('org.kivy.android.PythonActivity')
@@ -17,7 +15,7 @@ AlarmScheduler = autoclass('org.myapp.AlarmScheduler')
 
 
 def get_time_5seconds_from_now_in_millis():
-    "returns the time 5 seconds from now in milliseconds"
+    """returns the time 5 seconds from now in milliseconds"""
     return int((time.time() + 5) * 1000)
 
 
@@ -28,7 +26,7 @@ def schedule_task():
     to obtain the default ringtone and have it ring
 
     The current activity is passed when initializing the class because it is a
-    requirement when uisng getSystemService() which is required to get the
+    requirement when using getSystemService() which is required to get the
     alarm manager.
     """
     this = PythonActivity.mActivity
