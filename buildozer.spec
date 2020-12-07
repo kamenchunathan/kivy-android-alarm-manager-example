@@ -148,8 +148,7 @@ android.permissions = INTERNET
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
-android.add_src = java_files
-
+android.add_src = myapp
 # (list) Android AAR archives to add (currently works only with sdl2_gradle
 # bootstrap)
 #android.add_aars =
