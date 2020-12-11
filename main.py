@@ -15,4 +15,4 @@ class TodoApp(MDApp):
 
 
 if __name__ == '__main__':
-    AlarmApp().run()
+    TodoApp().run()
