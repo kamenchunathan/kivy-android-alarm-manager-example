@@ -10,6 +10,7 @@ error that occurred when using the getClass() method of a reflected java class.
 This error is likely related to the kivy version being used at the time of writing and may not be an issue with
 later versions hence should be easily implemented in python alone.
 """
+import json
 import time
 
 from jnius import autoclass
@@ -23,7 +24,7 @@ def get_time_5seconds_from_now_in_millis():
     return int((time.time() + 5) * 1000)
 
 
-def schedule_task():
+def schedule_task(title='Task title', message='Scheduled Task Activity'):
     """
     Schedules a task by calling the schedule task method of the TaskScheduler class
     The task itself is to run a service defined in the buildozer.spec file
@@ -32,8 +33,9 @@ def schedule_task():
     requirement when using getSystemService() which is required to get the
     alarm manager.
     """
+    task_details = {'title': title, 'message': message}
     python_activity = PythonActivity.mActivity
 
     task_time = get_time_5seconds_from_now_in_millis()
     task_scheduler = TaskScheduler(python_activity)
-    task_scheduler.scheduleTask(task_time, "{'action':''}")
+    task_scheduler.scheduleTask(task_time, json.dumps(task_details))
