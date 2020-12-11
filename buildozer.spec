@@ -55,7 +55,7 @@ requirements = python3,kivy,kivymd,pyjnius
 orientation = portrait
 
 # (list) List of service to declare
-#services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
+services = handletask:tasks.py
 
 #
 # OSX Specific
@@ -148,7 +148,7 @@ android.permissions = INTERNET
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
-android.add_src = myapp
+android.add_src = java_src
 # (list) Android AAR archives to add (currently works only with sdl2_gradle
 # bootstrap)
 #android.add_aars =
