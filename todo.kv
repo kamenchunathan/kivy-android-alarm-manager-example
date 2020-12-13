@@ -1,5 +1,23 @@
-FloatLayout:
-    MDRaisedButton:
+<RootAppLayout@FloatLayout>:
+    MDRectangleFlatButton:
+        id: set_time_btn
+        pos_hint: {'center': (0.5, 0.7)}
+        text: app.currently_set_time_or_default()
+        on_press: app.show_date_picker()
+
+    MDTextField:
+        id: task_body
+        size_hint: 0.7, 0.1
+        pos_hint: {'center': (0.5, 0.6)}
+        hint_text: 'Task title'
+
+    MDTextField:
+        id: task_message
+        size_hint: 0.7, 0.1
         pos_hint: {'center': (0.5, 0.5)}
-        text: 'Set alarm a minute from now'
-        on_press: app.set_alarm()
+        hint_text: 'Task Message'
+
+    MDRaisedButton:
+        pos_hint: {'center': (0.5, 0.4)}
+        text: 'schedule task'
+        on_press: app.schedule_todo_item(task_body.text, task_message.text)

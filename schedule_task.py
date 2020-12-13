@@ -11,6 +11,7 @@ This error is likely related to the kivy version being used at the time of writi
 later versions hence should be easily implemented in python alone.
 """
 import json
+from datetime import datetime
 import time
 
 from jnius import autoclass
@@ -19,12 +20,12 @@ PythonActivity = autoclass('org.kivy.android.PythonActivity')
 TaskScheduler = autoclass('org.test.myapp.TaskScheduler')
 
 
-def get_time_5seconds_from_now_in_millis():
-    """returns the time 5 seconds from now in milliseconds"""
-    return int((time.time() + 5) * 1000)
+def convert_time_to_millis(time: datetime):
+    """Convert a datetime object to time in milliseconds"""
+    return int(time.timestamp() * 1000)
 
 
-def schedule_task(title='Task title', message='Scheduled Task Activity'):
+def schedule_task(task_time, title='Task title', message='Scheduled Task Activity'):
     """
     Schedules a task by calling the schedule task method of the TaskScheduler class
     The task itself is to run a service defined in the buildozer.spec file
@@ -36,6 +37,8 @@ def schedule_task(title='Task title', message='Scheduled Task Activity'):
     task_details = {'title': title, 'message': message}
     python_activity = PythonActivity.mActivity
 
-    task_time = get_time_5seconds_from_now_in_millis()
+
+    task_time = convert_time_to_millis(task_time)
+    print('python: now + 5 :{0}, selected time: {1}'.format(time.time() * 1000 , task_time) )
     task_scheduler = TaskScheduler(python_activity)
     task_scheduler.scheduleTask(task_time, json.dumps(task_details))
