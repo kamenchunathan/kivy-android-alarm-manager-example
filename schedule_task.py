@@ -39,6 +39,5 @@ def schedule_task(task_time, title='Task title', message='Scheduled Task Activit
 
 
     task_time = convert_time_to_millis(task_time)
-    print('python: now + 5 :{0}, selected time: {1}'.format(time.time() * 1000 , task_time) )
     task_scheduler = TaskScheduler(python_activity)
     task_scheduler.scheduleTask(task_time, json.dumps(task_details))
